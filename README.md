@@ -1,8 +1,9 @@
 Leave versioned, encrypted messages on the internet for your friends to read.
 
-[](/docs/img-1.png)
-[](/docs/img-3.png)
-[](/docs/img-2.png)
+![Img](/docs/img-1.png)
+![Img](/docs/img-3.png)
+![Img](/docs/img-2.png)
+
 
 ## Quick Features
 
