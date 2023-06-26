@@ -1,8 +1,8 @@
 Leave versioned, encrypted messages on the internet for your friends to read.
 
-![Img](/docs/img-1.png)
-![Img](/docs/img-3.png)
-![Img](/docs/img-2.png)
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="/docs/img-1.png">   |  <img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="/docs/img-3.png">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="/docs/img-2.png">|
 
 
 ## Quick Features
