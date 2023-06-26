@@ -1,0 +1,205 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="js/vendor.js"></script>
+</head>
+
+<style>
+  #flex-container {
+    display: flex;
+  }
+
+  #left {
+    float: left;
+  }
+
+  .tab {
+    display: inline-block;
+    background-color: grey;
+    padding: 0.75rem;
+    color: #fff;
+  }
+
+  .selected {
+    background-color: black;
+  }
+
+  #right {
+    float: right;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /*
+ CSS for the main interaction
+*/
+  .tabset>input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+  }
+
+  .tabset .tab-panel {
+    display: none;
+  }
+
+  .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+  .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+  .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+  .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+  .tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+  .tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6) {
+    display: block;
+  }
+
+  /*
+ Styling
+*/
+  body {
+    font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+    color: #333;
+    font-weight: 300;
+    width: 400px;
+  }
+
+  .tabset>label {
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 25px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .tabset>label::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    width: 22px;
+    height: 4px;
+    background: #8d8d8d;
+  }
+
+  .tabset>label:hover,
+  .tabset>input:focus+label {
+    color: #06c;
+  }
+
+  .tabset>label:hover::after,
+  .tabset>input:focus+label::after,
+  .tabset>input:checked+label::after {
+    background: #06c;
+  }
+
+  .tabset>input:checked+label {
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+  }
+
+  .tab-panel {
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+  }
+
+  /*
+ Demo purposes only
+*/
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 30px;
+  }
+
+  .tabset {
+    max-width: 65em;
+  }
+</style>
+
+<body>
+  <div class="tabset">
+    <!-- Tab 1 -->
+    <input type="radio" name="tabset" id="tab1" aria-controls="versions" checked>
+    <label for="tab1">Versions</label>
+    <!-- Tab 2 -->
+    <input type="radio" name="tabset" id="tab2" aria-controls="write">
+    <label for="tab2">Write</label>
+    <!-- Tab 3 -->
+    <input type="radio" name="tabset" id="tab3" aria-controls="read">
+    <label for="tab3">Read</label>
+    <input type="radio" name="tabset" id="tab4" aria-controls="read">
+    <label for="tab4">?</label>
+
+    <div class="tab-panels">
+      <section id="versions" class="tab-panel">
+        <div id="version_list"></div>
+
+        <h1>Add a Secret for a Version</h1>
+        <span>
+          Version
+          <select id="version_select"></select>
+          <!-- <input type="number" id="version"></input> -->
+        </span>
+
+        <p>Secret</p>
+        <input id="secret" />
+
+        <button id="mybutton">Save</button>
+      </section>
+      <section id="write" class="tab-panel">
+        <div id="input">
+          <h1>Cleartext</h1>
+          <textarea cols="40" rows="10" id="inputText"></textarea>
+        </div>
+
+        <button id="encryptButton">Encrypt</button>
+
+        <div>
+          <textarea cols="40" rows="10" id="encrypt_output" class="hidden"></textarea>
+        </div>
+      </section>
+
+      <section id="read" class="tab-panel">
+        <div id="output">
+          <h1>Text to reveal</h1>
+          <textarea cols="40" rows="10" id="outputText"></textarea>
+        </div>
+
+        <button id="decryptButton">Decrypt</button>
+
+        <div>
+          <p id="decrypt_output" class="hidden"></p>
+        </div>
+      </section>
+      <section id="?" class="tab-panel">
+        <h1>What's this?</h1>
+        <p>In this game, you are provided a list of <b>VERSION</b> to encrypt messages with. Only those who have the
+          <b>SECRET</b> can read it.
+        </p>
+        <p>The prefix of an encrypted message, <i>p123</i> indicates the version</p>
+        <p>If someone uses the wrong secret for the version, you'll know by being unable to read the message.</p>
+        <p>Only the latest version can be used to encrypt messages, so if a new version drops you'll need to find the
+          new secret to continue reading.</p>
+        <p>Likewise, old messages cannot be read without those secrets.</p>
+      </section>
+    </div>
+
+    <div id="messages"></div>
+
+    <hr />
+
+    <span id="version_string"></span>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+
+</html>

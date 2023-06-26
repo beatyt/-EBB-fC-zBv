@@ -1,0 +1,4 @@
+- Versioning of cipher to read something at a point in time. That could be in plaintext to signal.
+- Support for @
+- Alerting to a new version / key
+- Compromised old messages?
