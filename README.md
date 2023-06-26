@@ -1,6 +1,6 @@
 Leave versioned, encrypted messages on the internet for your friends to read.
 
-[](/docs/img-1.png)
+![Img](/docs/img-1.png)
 
 ## Quick Features
 
